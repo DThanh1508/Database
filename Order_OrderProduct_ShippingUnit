@@ -1,0 +1,22 @@
+CREATE TABLE orderproduct (
+    orderId varchar(10) NOT NULL ,
+    productId varchar(50) NOT NULL
+    );
+
+CREATE TABLE orders(
+    orderId varchar(10) PRIMARY KEY ,
+    userId varchar(10) ,
+    shippingUnitId  int 
+    );
+
+CREATE TABLE shippingUnit(
+    shippingUnitId int AUTO_INCREMENT PRIMARY KEY,
+    shippingUnit varchar(50) ,
+    userId varchar(10) ,
+    phone varchar(15),
+    email varchar(50)
+    );
+ALTER TABLE orderproduct ADD FOREIGN KEY (orderId ) REFERENCES orders (orderId );
+ALTER TABLE orders  ADD FOREIGN KEY (shippingUnitId ) REFERENCES shippingUnit(shippingUnitId);
+INSERT INTO `shippingunit` (`shippingUnitId`, `shippingUnit`, `userId`, `phone`, `email`) VALUES ('1', 'Tien', 'US01', '+84 367925033', 'tien123@gmail.com');
+INSERT INTO `orders` (`orderId`, `userId`, `shippingUnitId`) VALUES ('1', 'US01', '1');
